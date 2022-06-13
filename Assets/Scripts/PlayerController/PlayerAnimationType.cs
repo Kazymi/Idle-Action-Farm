@@ -2,5 +2,6 @@
 {
     Walk,
     Idle,
-    Collecting
+    WalkAndCollecting,
+    IdleAndCollecting
 }

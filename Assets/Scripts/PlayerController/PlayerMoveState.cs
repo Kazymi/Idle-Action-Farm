@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PlayerMoveState : State
 {
-    private readonly PlayerAnimatorController _playerAnimatorController;
+    protected readonly PlayerAnimatorController _playerAnimatorController;
     private readonly IMovementDirection _movementDirection;
     private readonly PlayerMovementConfiguration _playerMovementConfiguration;
-    private readonly PlayerMovement _playerMovement;
+    private readonly PlayerStateMachine _playerMovement;
 
     public PlayerMoveState(PlayerAnimatorController playerAnimatorController, IMovementDirection movementDirection,
-        PlayerMovementConfiguration playerMovementConfiguration, PlayerMovement playerMovement)
+        PlayerMovementConfiguration playerMovementConfiguration, PlayerStateMachine playerMovement)
     {
         _playerAnimatorController = playerAnimatorController;
         _movementDirection = movementDirection;
@@ -34,7 +34,6 @@ public class PlayerMoveState : State
 
     private void Move()
     {
-      
         var newPosition = _movementDirection.Direction * Time.deltaTime * _playerMovementConfiguration.Speed;
         _playerMovement.Move(newPosition);
     }
