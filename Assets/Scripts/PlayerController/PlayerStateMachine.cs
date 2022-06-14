@@ -12,6 +12,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private CharacterController _characterController;
 
+
     private PlayerAnimatorController _playerAnimatorController;
     private global::StateMachine.StateMachine _stateMachine;
 

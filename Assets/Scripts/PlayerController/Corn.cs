@@ -47,7 +47,7 @@ public class Corn : MonoBehaviour
         {
             part.gameObject.SetActive(true);
         }
-        _currentAmountParts++;
+        _currentAmountParts = partsOfCorn.Count;
     }
 
     public void CuteCorn()
