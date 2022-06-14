@@ -4,6 +4,9 @@
 public class ShopConfiguration : ScriptableObject
 {
     [SerializeField] private float intervalRequest;
+    [SerializeField] private float sellTime;
+
+    public float SellTime => sellTime;
 
     public float IntervalRequest => intervalRequest;
 }

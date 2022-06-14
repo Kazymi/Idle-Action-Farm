@@ -6,21 +6,15 @@ using UnityEngine;
 public class MoneyDispenserController : MonoBehaviour
 {
     [SerializeField] private MoneyControllerConfiguration moneyControllerConfiguration;
-    [SerializeField] private Transform coinPanel;
-
-
+    
     private PlayerParameters _playerParameters;
-    private Sequence _sequence;
+    private PlayerMoneyUI _playerMoneyUI;
     private int _moneyInDelay;
-
-    private void Awake()
-    {
-        SequenceInitialize();
-    }
 
     private void Start()
     {
         _playerParameters = ServiceLocator.GetService<PlayerParameters>();
+        _playerMoneyUI = ServiceLocator.GetService<PlayerMoneyUI>();
     }
 
     private void OnEnable()
@@ -32,28 +26,17 @@ public class MoneyDispenserController : MonoBehaviour
     {
         ServiceLocator.Unsubscribe<MoneyDispenserController>();
     }
-
-    private void SequenceInitialize()
-    {
-        _sequence = DOTween.Sequence();
-        _sequence.SetLoops(-1);
-         _sequence.Append(coinPanel.DOShakePosition(moneyControllerConfiguration.PanelShakeDuration,
-             moneyControllerConfiguration.PanelShakeStrange));
-        _sequence.Pause();
-
-    }
+    
     private IEnumerator MoneyDispenser()
     {
-        _sequence.Restart();
+        _playerMoneyUI.StartShakeShake();
         while (_moneyInDelay > 0)
         {
             _moneyInDelay--;
             _playerParameters.AddMoney(1);
             yield return new WaitForSeconds(moneyControllerConfiguration.AddMoneyInterval);
         }
-
-        _sequence.Restart();
-        _sequence.Pause();
+        _playerMoneyUI.PauseShake();
     }
     
     public void AddMoney(int amount)

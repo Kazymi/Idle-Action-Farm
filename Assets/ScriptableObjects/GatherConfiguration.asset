@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6efcaab03ea41e8b58246ef33e87c65, type: 3}
   m_Name: GatherConfiguration
   m_EditorClassIdentifier: 
-  lookingTime: 1
+  lookingTime: 0.2
   radius: 1
   intervalBetweenCorn: 0.1
   maxCorns: 40

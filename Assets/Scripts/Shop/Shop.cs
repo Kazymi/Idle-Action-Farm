@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,8 +44,13 @@ public class Shop : MonoBehaviour
     public void Sell(PriceConfiguration priceConfiguration)
     {
         _moneyController.AddMoney(priceConfiguration.Price);
+        StartCoroutine(SpawnCoinInterval());
+    }
+
+    private IEnumerator SpawnCoinInterval()
+    {
+        yield return new WaitForSeconds(shopConfiguration.SellTime);
         _uiCoinSpawner.SpawnCoin();
-        
     }
 
     private void TryToBuy()

@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f11f734a206e42cdbfc051ff63a51f72, type: 3}
-  m_Name: ShopConfiguration
+  m_Script: {fileID: 11500000, guid: 82f36951feb94492b3a4f4a27d1180d8, type: 3}
+  m_Name: ShakeUIConfiguration
   m_EditorClassIdentifier: 
-  intervalRequest: 0.2
-  sellTime: 0.1
+  panelShakeDuration: 0.2
+  panelShakeStrange: 5
+  imageShakeDuration: 0.1
+  imageShakeStrange: 0.2

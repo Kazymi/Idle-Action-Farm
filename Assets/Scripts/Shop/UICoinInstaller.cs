@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class UICoinInstaller : MonoBehaviour
 {
@@ -10,7 +11,12 @@ public class UICoinInstaller : MonoBehaviour
 
     private void Awake()
     {
-        _uiCoinSpawner = new UICoinSpawner(prefab, transform, startPosition.position, endPosition.position);
+        _uiCoinSpawner = new UICoinSpawner();
+    }
+
+    private void Start()
+    {
+        _uiCoinSpawner.Initialize(prefab, transform, startPosition.position, endPosition.position);
     }
 
     private void OnEnable()

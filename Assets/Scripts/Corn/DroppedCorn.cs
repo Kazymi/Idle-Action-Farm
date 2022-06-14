@@ -20,7 +20,7 @@ public class DroppedCorn : MonoPooled,ISalableItem
     {
         IsAttached = true;
         transform.parent = position;
-        transform.DOLocalMove(new Vector3(0,height,0), droppedCornConfiguration.Duration);
+        transform.DOLocalMove(new Vector3(0,height,0), droppedCornConfiguration.Duration).SetEase(Ease.InOutBack);
         transform.DOLocalRotate(Vector3.zero, droppedCornConfiguration.Duration);
 
     }
@@ -29,7 +29,7 @@ public class DroppedCorn : MonoPooled,ISalableItem
     {
         var sequence = DOTween.Sequence();
         transform.parent = position;
-        sequence.Append(transform.DOLocalMove(new Vector3(0,0,0), droppedCornConfiguration.Duration));
+        sequence.Append(transform.DOLocalMove(new Vector3(0,0,0), droppedCornConfiguration.Duration).SetEase(Ease.InOutBack));
         sequence.Join(transform.DOLocalRotate(Vector3.zero, droppedCornConfiguration.Duration));
         _currentShop = shop;
         sequence.onComplete += ToShop;
