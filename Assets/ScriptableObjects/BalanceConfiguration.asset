@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff77c9a8fe434d5aa2aa083fc5d8c265, type: 3}
   m_Name: BalanceConfiguration
   m_EditorClassIdentifier: 
-  interval: 0.5
+  interval: 0.1
   idleShaking: 3
-  maxShaking: 20
-  shakingIncrease: 1
-  speed: 0.5
+  maxShaking: 14
+  shakingIncrease: 4
+  speed: 1

@@ -52,10 +52,10 @@ public class BalanceController : MonoBehaviour
     private void RotateSequenceInitialize()
     {
         _rotateSequence = DOTween.Sequence();
-        _rotateSequence.Append(rotateObject.DOLocalRotate(new Vector3(0, 0, _currentShaking),
-            balanceConfiguration.Speed, RotateMode.LocalAxisAdd));
-        _rotateSequence.Append(rotateObject.DOLocalRotate(new Vector3(0, 0, -_currentShaking),
-            balanceConfiguration.Speed, RotateMode.LocalAxisAdd));
+        _rotateSequence.Append(rotateObject.DOLocalRotate(new Vector3(_currentShaking, 90, 0),
+            balanceConfiguration.Speed));
+        _rotateSequence.Append(rotateObject.DOLocalRotate(new Vector3(-_currentShaking, 90, 0),
+            balanceConfiguration.Speed));
         _rotateSequence.onComplete += RotateSequenceInitialize;
     }
 }
