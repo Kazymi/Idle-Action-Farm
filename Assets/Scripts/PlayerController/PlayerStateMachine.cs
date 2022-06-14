@@ -72,7 +72,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Move(Vector3 position)
     {
-        var newPosition = new Vector3(position.x, 0, -position.y);
+        var newPosition = new Vector3(-position.x, 0, -position.y);
         transform.LookAt(newPosition + transform.position);
         _characterController.Move(newPosition);
     }

@@ -19,7 +19,7 @@ public class PlayerIdleCollectionState : State
 
     public override void OnStateExit()
     {
-        _playerInstrumentActivator.SetInstrumentActivation(InstrumentType.Braid,true);
+        _playerInstrumentActivator.SetInstrumentActivation(InstrumentType.Braid,false);
         _playerAnimatorController.SetBool(PlayerAnimationType.IdleAndCollecting, false);
     } 
 }

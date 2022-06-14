@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f918ff9ffaea4e56b61f022e745ed24c, type: 3}
   m_Name: PlayerMovementConfiguration
   m_EditorClassIdentifier: 
-  timeToNewPosition: 0.3
-  speed: 0.97
+  speed: 1

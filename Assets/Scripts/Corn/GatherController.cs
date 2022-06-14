@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GatherController : MonoBehaviour
+public class GatherController : MonoBehaviour, IKeeperOfSalableItems
 {
     [SerializeField] private TextController cornTextController;
     [SerializeField] private GatherConfiguration gatherConfiguration;
@@ -15,9 +15,11 @@ public class GatherController : MonoBehaviour
     private bool _isLookingUnlock => _droppedCorns.Count < gatherConfiguration.MAXCorns;
     private readonly List<DroppedCorn> _droppedCorns = new List<DroppedCorn>();
 
+    public bool IsItemCanBeSold => _droppedCorns.Count != 0;
+
     private void Start()
     {
-        cornTextController.UpdateText($"{_droppedCorns.Count} / {gatherConfiguration.MAXCorns}");
+        UpdateText();
     }
 
     private void Update()
@@ -69,9 +71,13 @@ public class GatherController : MonoBehaviour
     {
         droppedCorn.MoveAndAttach(fistBlock, _droppedCorns.Count * gatherConfiguration.IntervalBetweenCorn);
         _droppedCorns.Add(droppedCorn);
-        cornTextController.UpdateText($"{_droppedCorns.Count} / {gatherConfiguration.MAXCorns}");
+        UpdateText();
     }
 
+    private void UpdateText()
+    {
+        cornTextController.UpdateText($"{_droppedCorns.Count} / {gatherConfiguration.MAXCorns}");
+    }
     private DroppedCorn GetNearestCorn(IEnumerable<Collider> colliders)
     {
         var enumerable = colliders as Collider[] ?? colliders.ToArray();
@@ -83,5 +89,13 @@ public class GatherController : MonoBehaviour
         var nearest = enumerable.OrderBy(x => Vector3.Distance(center.position, x.transform.position))
             .FirstOrDefault();
         return nearest.GetComponent<DroppedCorn>();
+    }
+
+    public ISalableItem GetSalableItem()
+    {
+        var lastCorn = _droppedCorns[_droppedCorns.Count - 1];
+        _droppedCorns.Remove(lastCorn);
+        UpdateText();
+        return lastCorn;
     }
 }

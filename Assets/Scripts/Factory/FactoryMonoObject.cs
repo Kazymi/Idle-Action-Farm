@@ -19,7 +19,7 @@ public class FactoryMonoObject<T> : IFactory<T>
 
     public T CreatePoolObject()
     {
-        var newObject = GameObject.Instantiate(_prefab);
+        var newObject = GameObject.Instantiate(_prefab,_parent);
 
         var returnValue = newObject.GetComponent<T>();
         newObject.SetActive(false);

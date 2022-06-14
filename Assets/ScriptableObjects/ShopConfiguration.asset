@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f1c04e79b9b42af9957398c703f2134, type: 3}
-  m_Name: DroppedCornConfiguration
+  m_Script: {fileID: 11500000, guid: f11f734a206e42cdbfc051ff63a51f72, type: 3}
+  m_Name: ShopConfiguration
   m_EditorClassIdentifier: 
-  priceConfiguration: {fileID: 11400000, guid: 89dadb1d35b52fd48943ae6d08b6969e, type: 2}
-  duration: 0.4
+  intervalRequest: 0.1

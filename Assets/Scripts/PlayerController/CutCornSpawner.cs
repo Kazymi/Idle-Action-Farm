@@ -9,12 +9,6 @@ public class CutCornSpawner
     {
         var factory = new FactoryMonoObject<MonoPooled>(prefab.gameObject, parent);
         _poolCutCorns = new Pool<MonoPooled>(factory, AmountCornsInPool);
-        ServiceLocator.Subscribe<CutCornSpawner>(this);
-    }
-
-    ~CutCornSpawner()
-    {
-        ServiceLocator.Unsubscribe<CutCornSpawner>();
     }
 
     public void SpawnCutCorn(Vector3 position)
