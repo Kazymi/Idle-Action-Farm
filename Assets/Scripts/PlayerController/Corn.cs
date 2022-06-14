@@ -7,13 +7,17 @@ public class Corn : MonoBehaviour
     [SerializeField] private Transform centerOfCorn;
     [SerializeField] private List<Transform> partsOfCorn;
 
+
     private float _timeOfLastGrowth;
     private int _currentAmountParts;
     private CutCornSpawner _cornSpawner;
+    private VFXSpawner _vfxSpawner;
+
     public bool IsCornActive => _currentAmountParts > 0;
 
     private void Start()
     {
+        _vfxSpawner = ServiceLocator.GetService<VFXSpawner>();
         _cornSpawner = ServiceLocator.GetService<CutCornSpawner>();
         _currentAmountParts = partsOfCorn.Count;
     }
@@ -47,6 +51,7 @@ public class Corn : MonoBehaviour
         {
             part.gameObject.SetActive(true);
         }
+
         _currentAmountParts = partsOfCorn.Count;
     }
 
@@ -61,5 +66,6 @@ public class Corn : MonoBehaviour
         _cornSpawner.SpawnCutCorn(centerOfCorn.position);
         _timeOfLastGrowth = cornConfiguration.RespawnTime;
         _currentAmountParts--;
+        _vfxSpawner.SpawnVFX(centerOfCorn.position, VFXType.CornCut);
     }
 }
