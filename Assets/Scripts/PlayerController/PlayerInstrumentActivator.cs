@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerInstrumentActivator
 {
-    private readonly Dictionary<InstrumentType, GameObject> _instruments = new Dictionary<InstrumentType, GameObject>();
+    private readonly Dictionary<InstrumentType, Instrument> _instruments = new Dictionary<InstrumentType, Instrument>();
 
     public PlayerInstrumentActivator(List<PlayerInstrumentConfiguration> playerInstrumentConfigurations)
     {
@@ -15,6 +15,6 @@ public class PlayerInstrumentActivator
 
     public void SetInstrumentActivation(InstrumentType instrumentType, bool value)
     {
-        _instruments[instrumentType].SetActive(value);
+        _instruments[instrumentType].ActivateInstrument(value);
     }
 }

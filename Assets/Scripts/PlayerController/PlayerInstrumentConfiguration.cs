@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerInstrumentConfiguration
 {
     [SerializeField] private InstrumentType instrumentType;
-    [SerializeField] private GameObject instrument;
+    [SerializeField] private Instrument instrument;
 
     public InstrumentType InstrumentType => instrumentType;
 
-    public GameObject Instrument => instrument;
+    public Instrument Instrument => instrument;
 }

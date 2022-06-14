@@ -47,26 +47,26 @@ public class PlayerStateMachine : MonoBehaviour
         idleState.AddTransition(new StateTransition(movementState,
             new FuncCondition(() => movementDirection.Direction != Vector2.zero)));
         idleState.AddTransition(new StateTransition(idleCollectionState,
-            new FuncCondition(() => harvester.CurrentCorn != null && movementDirection.Direction == Vector2.zero)));
+            new FuncCondition(() => harvester.HarvesterInField && movementDirection.Direction == Vector2.zero)));
 
         movementState.AddTransition(new StateTransition(idleState,
             new FuncCondition(() => movementDirection.Direction == Vector2.zero)));
         movementState.AddTransition(new StateTransition(movementAndCollectionState,
-            new FuncCondition(() => harvester.CurrentCorn != null)));
+            new FuncCondition(() => harvester.HarvesterInField)));
 
         movementAndCollectionState.AddTransition(new StateTransition(movementState,
-            new FuncCondition(() => harvester.CurrentCorn == null && movementDirection.Direction != Vector2.zero)));
+            new FuncCondition(() => harvester.HarvesterInField == false && movementDirection.Direction != Vector2.zero)));
         movementAndCollectionState.AddTransition(new StateTransition(idleState,
-            new FuncCondition(() => harvester.CurrentCorn == null && movementDirection.Direction == Vector2.zero)));
+            new FuncCondition(() => harvester.HarvesterInField == false && movementDirection.Direction == Vector2.zero)));
         movementAndCollectionState.AddTransition(new StateTransition(idleState,
-            new FuncCondition(() => harvester.CurrentCorn != null && movementDirection.Direction == Vector2.zero)));
+            new FuncCondition(() => harvester.HarvesterInField && movementDirection.Direction == Vector2.zero)));
 
         idleCollectionState.AddTransition(new StateTransition(idleState,
-            new FuncCondition(() => harvester.CurrentCorn == null && movementDirection.Direction == Vector2.zero)));
+            new FuncCondition(() => harvester.HarvesterInField == false && movementDirection.Direction == Vector2.zero)));
         idleCollectionState.AddTransition(new StateTransition(movementState,
-            new FuncCondition(() => harvester.CurrentCorn == null && movementDirection.Direction != Vector2.zero)));   
+            new FuncCondition(() => harvester.HarvesterInField == false && movementDirection.Direction != Vector2.zero)));   
         idleCollectionState.AddTransition(new StateTransition(movementAndCollectionState,
-            new FuncCondition(() => harvester.CurrentCorn != null && movementDirection.Direction != Vector2.zero)));
+            new FuncCondition(() => harvester.HarvesterInField && movementDirection.Direction != Vector2.zero)));
         _stateMachine = new global::StateMachine.StateMachine(idleState);
     }
 
